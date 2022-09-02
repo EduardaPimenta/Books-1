@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +14,10 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="css/estilo.css" rel="stylesheet" type="text/css" />
   
     <!--importação do Js --->
-   <script src="criar-livro.js" defer></script>
+   <script src="js/criar-livro.js" defer></script>
 
 </head>
 <body>
@@ -53,7 +53,7 @@
 
       <h2>
         <?php
-        echo "Livros"?>
+        echo "Os mais temidos"?>
       </h2>
 
     </header>
@@ -67,7 +67,7 @@
         
         <section id="sectionLivros">
           
-          <?php require_once "Conexao.php"; 
+          <?php require_once "model/Conexao.php"; 
            $sql = "select * from book"; 
 
             if(!Conexao::execWithReturn($sql)){ 
@@ -78,16 +78,13 @@
               $dados = Conexao::getData();
               //foreach($dados as $livro){
               foreach($dados as $livro):
-
-
               
              ?>
-            <article>
+        <article>
                 <div>
-                    <img src="img/book.jpg" alt="Imagem do livro">
-
+                    <img src="img/book.jpg" alt="imagem do livro">
                 </div>
-                <div class = "detalhes">
+                <div class="detalhes">
                     <h3>Livro: <span>
                         <?= $livro["nome"]; ?>
                     </span></h3>
@@ -95,14 +92,25 @@
                     <?= $livro["paginas"]; ?>
                     </span></h3>
                     <h3>Autor/a/as/es: <span>
-                    <?= $livro["autor"]; ?>
-                    </span></h3>
+                        <?= $livro["autor"]; ?></span></h3>
                 </div>
                 <div>
-                    <div class="marcadores"><span class="material-icons">book</span>
-                        <span class="contador">12</span> 
-                    <div class="marcadores"><span class="material-icons">favorite</span>   
-                        <span class="contador">15</span> 
+                    <div class="marcadores">
+                        <span class="material-icons">
+                            book
+                        </span>
+                        <span class="contador rounded-circle">
+                            12
+                        </span>
+                    </div>
+                    
+                    <div class="marcadores"> 
+                        <span class="material-icons">
+                            favorite
+                        </span>
+                        <span class="contador rounded-circle">
+                            15
+                        </span>
                     </div>
                 </div>
             </article>
